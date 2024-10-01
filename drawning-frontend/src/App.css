@@ -5,6 +5,27 @@
   text-align: center;
 }
 
+.Canvas-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid darkslategray;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.Canvas-container input {
+  width: 100%;
+  padding: 5px;
+  height: 50px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: 1px solid darkslategray;
+}
+
+.Canvas-container canvas {
+  border: 2px solid darkslategray;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -2,12 +2,7 @@ import express from 'express';
 import expressWs from 'express-ws';
 import cors from 'cors';
 import { WebSocket } from 'ws';
-
-interface Pixel {
-  x: number;
-  y: number;
-  color: string;
-}
+import { Pixel } from './types';
 
 const app = express();
 expressWs(app);
@@ -31,8 +26,8 @@ router.ws('/draw', (ws, _req) => {
       pixels.push(pixelData);
 
       connectedClients.forEach((clientWs) => {
-        if (clientWs !== ws && clientWs.readyState === WebSocket.OPEN) {
-          clientWs.send(message);
+        if (clientWs !== ws) {
+          clientWs.send(JSON.stringify(pixels));
         }
       });
 
