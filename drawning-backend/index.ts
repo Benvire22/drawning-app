@@ -13,7 +13,7 @@ const port = 8000;
 const router = express.Router();
 
 const connectedClients: WebSocket[] = [];
-let pixels: Pixel[] = [];
+const pixels: Pixel[] = [];
 
 router.ws('/draw', (ws, _req) => {
   connectedClients.push(ws);
@@ -30,7 +30,6 @@ router.ws('/draw', (ws, _req) => {
           clientWs.send(JSON.stringify(pixels));
         }
       });
-
 
     } catch (e) {
       ws.send(JSON.stringify({ error: 'Invalid message!' }));
